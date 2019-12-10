@@ -1,0 +1,401 @@
+Interview Questions for Beginners
+Q1. What is Shell?
+The Shell is a Command Line Interpreter. It translates commands entered by the user and converts them into a language that is understood by the Kernel. The shell interprets a command typed in at the terminal, and calls the program that you want. 
+
+Q2. What is a Shell Script? Can you name some of its advantages? 
+A shell script is a command-containing text-file that contains commands in order of their execution. Typical operations performed by shell scripts include printing text, file manipulation, and program execution.
+
+Following are the two main advantages of shell scripting:
+
+It facilitates developing your own custom OS with relevant features which best suit your needs.
+It facilitates designing software applications according to their respective platforms.
+Q3. What are the different types of variables used in Shell Script?
+ A shell script has two types of variables :
+
+System-defined variables are created/defined by the Operating System(Linux) itself. These variables are generally defined in Capital Letters and can be viewed by “set” command.
+User-defined variables are created or defined by system users and the values of variables can be viewed by using the command “echo”.
+Q4. What are the different types of commonly used shells on a typical Linux system?
+There are primarily two kinds of shells in Linux OS, namely, Bourne Shell and C-Shell. Examples of derivative from each are as follows;
+
+Bourne Shell: Bourne Shell, Bourne-Again Shell, Korn Shell, POSIX Shell.
+C-Shell: C-Shell, TENEX C-Shell, Z-Shell
+Q5. How do you create a shortcut in Linux?
+This can be done with the help of links present in Linux OS.
+
+Hard Link: Hard links are linked to the inode of the file and have to be on the same file system as of the file. Deleting the original file does not affect the hard link.
+
+Soft Link: Soft links are linked to the file name and can reside on a different file system as well. Deleting the original file makes the soft link inactive.
+
+Q6. Tell something about the Super Block in Shell scripting?
+A Super Block is essentially a program that contains a record of specific file systems.
+
+Characteristics such as the block size, the empty and the filled blocks and their respective counts, the size and location of the inode tables, the disk block map, and usage information, and the size of the block groups are available in a superblock.
+
+Q7. What is GUI scripting?
+GUI is used for controlling a computer and its applications. GUI scripting supports different applications. It mostly depends on the operating system.
+
+Q8. What are the various stages of a Linux process it passes through?
+A Linux process generally passes through four stages:
+
+Waiting: The Linux process waits for the resource.
+Running: The Linux process is currently being executed.
+Stopped: The Linux process is stopped after successful execution.
+Zombie: The process has stopped but is still active in the process table.
+Q9. What is the difference between break and continue commands?
+Break: It is a simple way to escape out of a loop in progress. We can use the break command to exit out from any loop, including while and until loops.
+Continue: It causes the present iteration of the loop to exit, instead of the entire loop.
+Q10. What is the significance of the Shebang line in Shell Scripting?
+The Shebang line is present at the top of the script,e.g. #!/bin/sh. It simply provides information regarding the location where the engine is placed. The engine is the one that executes the script. 
+
+
+Q11. How to pass an argument to a script?
+#!/bin/sh
+ct $1
+
+q11 - Shell Scripting Interview Questions - Edureka
+
+
+Q12. How to use arguments in a Script?
+#!/bin/sh
+cp $1 $2
+
+q12 - Shell Scripting Interview Questions - Edureka
+
+Q13. How to calculate the number of passed arguments?
+#!/bin/sh
+echo "Number of Parameters passed:$#"
+
+q13 - Shell Scripting Interview Questions - Edureka
+question 13 – Shell Scripting Interview Questions – Edureka 
+
+Q14. How to get script name inside a script?
+!/bin/sh
+echo "Script Name:$0"
+
+q14 - Shell Scripting Interview Questions - Edureka
+question 14 – Shell Scripting Interview Questions – Edureka
+
+Q15. How to check if the previous command was run successfully?
+#!/bin/sh
+var=$?
+if var=0
+then
+echo "Script was Run successfully"
+
+else
+echo "Script was unsuccessful"
+fi
+
+q15 - Shell Scripting Interview Questions - Edureka
+question 15 – Shell Scripting Interview Questions – Edureka
+
+Q16. How to get the last line from a file using just the terminal?
+tail -1 <filename>
+
+Q17. How to get the first line from a file using just the terminal?
+head -1 <filename>
+
+Q18. How to get the 3rd element/column from each line from a file?
+#!/bin/sh
+awk '{print $3}' $1
+
+q18 - Shell Scripting Interview Questions - Edureka
+question 18 – Shell Scripting Interview Questions – Edureka
+
+Q19. How to write a function?
+#!/bin/sh
+
+function example {
+echo "Hello Learner"
+}
+
+Q20. Write down the Syntax for all the loops in Shell Scripting.
+For Loop:
+
+for var in word1 word2 ... wordN
+do
+   Statement(s) to be executed for every word.
+done
+While Loop:
+
+while command
+do
+   Statement(s) to be executed if command is true
+done
+until command
+do
+   Statement(s) to be executed until command is true
+done
+
+Q31. Determine the output of the following command: name=Shubham && echo ‘My name is $name’.
+q31 - Shell Scripting Interview Questions - Edureka
+question 31 – Shell Scripting Interview Questions – Edureka
+
+Q32. Determine the output of the following command: [ -z “” ] && echo 0 || echo 1 
+q32 - Shell Scripting Interview Questions - Edureka
+question 32 – Shell Scripting Interview Questions – Edureka
+
+Q33. Determine the output of the following command: echo ${new:-variable}
+q34 - Shell Scripting Interview Questions - Edureka
+
+q33 – Shell Scripting Interview Questions – Edureka
+
+Q34. How to get part of string variable with echo command only?
+#!/bin/sh
+echo ${variable:x:y}
+#x - start position
+#y - length
+
+variable="My name is Upasana, and I work at Edureka."
+echo ${variable:11:7} # will display Upasana
+
+q34 - Shell Scripting Interview Questions - Edureka
+q34 – Shell Scripting Interview Questions – Edureka
+
+Q35. Rewrite the command to print the sentence and convert the variable to plural: echo “I like $variable”.
+q35 - Shell Scripting Interview Questions - Edureka
+q35 – Shell Scripting Interview Questions – Edureka
+
+Q36. How to print all the arguments provided to the script?
+#!/bin/bash  for i; do     echo $i  done
+
+
+q36 - Shell Scripting Interview Questions - Edureka
+q36 – Shell Scripting Interview Questions – Edureka
+
+Q37. How to print PID of the current shell?
+
+
+#!/bin/sh
+
+for PID in $$
+do
+echo $PID
+done
+
+q37 - Shell Scripting Interview Questions - Edureka
+q37 – Shell Scripting Interview Questions – Edureka
+
+Q38. How to print all array elements and their respective indexes?
+!/bin/sh
+array=("This" "is" "Shell" "Scripting")
+echo ${array[@]}
+echo ${!array[@]}
+
+q39 - Shell Scripting Interview Questions - Edureka
+q38 – Shell Scripting Interview Questions – Edureka
+
+Q39. How to print the first array element?
+#!/bin/sh
+array=("This" "is" "Shell" "Scripting" )
+echo ${array[0]}
+
+q38 - Shell Scripting Interview Questions - Edureka
+q39 – Shell Scripting Interview Questions – Edureka
+
+Q40. What is the Crontab?
+Crontab stands for cron table because it uses the job scheduler cron to execute tasks. The crontab is a list of commands that you want to run on a regular schedule, and also the name of the command used to manage that list. 
+
+The schedule is called the crontab, which is also the name of the program used to edit that schedule.
+
+Interview Questions for the Experienced
+Q41. How many fields are present in a crontab file and what does each field specify?
+The crontab file has six fields.
+
+The first five fields contain information on when to execute the command and they are as follows;
+
+minute(0-59)
+hour(0-23)
+day(1-31)
+month(1-12)
+day of the week(0-6, Sunday = 0).
+The sixth field contains the command to be executed.
+
+Q42. What are the two files of crontab command?
+The two files of crontab command are:
+
+cron.allow which decides the users need to be permitted for using the crontab command.
+cron.deny which decides the users need to be prevented from using the crontab command.
+Q43. What command needs to be used to take the backup?
+The tar command is used to take the backup. It stands for tape archive. The command is mainly used to save and restore files to and from an archive medium like tape.
+
+Q44. What are the different commands available to check the disk usage?
+There are three different commands available to check the disk usage.
+
+Operating Systems Training
+df: It is used to check the free disk space.
+du: It is used to check the directory wise disk usage.
+dfspace: It is used to check the free disk space in terms of MB.
+Q45. What are the different communication commands available in the Shell?
+There are four different communication commands available in Shell.
+
+mail
+news
+wall
+motd
+The total disk space used by Edureka can be found out as shown below.
+
+du –s/home/Edureka
+
+
+Q47. How to debug the problems encountered in the shell script/program?
+Given below are some common methods used to debug the problems in the script.
+
+Debug statements can be inserted in the shell script to output/display the information which helps to identify the problem.
+Using set -x we can enable debugging in the script.
+Q48. What is the difference between = and ==?
+= This is used for assigning value to the variable.
+== This is used for string comparison.
+Q49. How to open a read-only file in the Shell?
+A read-only file can be opened using the below command:
+
+vi –R <File Name>
+
+Q50. How can the contents of a file inside jar be read without extracting in a shell script?
+The contents of the file inside a jar can be read without extracting as shown below.
+
+tar –tvf <File Name>.tar
+
+Q51. Write a shell script to get current date, time, user name and current working directory.
+#!/bin/sh
+echo "Hello, $LOGNAME"
+echo "Today's date is `date`"
+echo "Username is `who i am`"
+echo "Current directory is `pwd`"
+
+q51 - Shell Scripting Interview Questions - Edureka
+q51 – Shell Scripting Interview Questions – Edureka
+
+Q52. How to find all the files modified in less than 3 days and save the record in a text file?
+find . -type f -mtime -3 -exec ls -l {} ; > last3days.txt
+
+Q53. Write a Shell Script that adds two numbers if provided as the command Line Argument and if the two numbers are not entered throws an Error Message.
+#!/bin/sh
+# The Shebang
+
+if [ $# -ne 2 ]
+# If two Inputs are not received from Standard Input
+
+then
+# then execute the below statements
+
+echo "Usage - $0 x y"
+# print on standard output, how-to use the script (Usage - ./1.sh x y )
+
+echo " Where x and y are two nos for which I will print sum"
+# print on standard output, “Where x and y are two nos for which I will pri$
+
+exit 1
+# Leave shell in Error Stage and before the task was successfully carried o$
+
+fi
+
+# print on standard output, how-to use the script (Usage - ./1.sh x y )
+
+echo " Where x and y are two nos for which I will print sum"
+# print on standard output, “Where x and y are two nos for which I will pri$
+
+exit 1
+# Leave shell in Error Stage and before the task was successfully carried o$
+
+fi
+# End of the if Statement.
+
+echo "Sum of $1 and $2 is `expr $1 + $2`"
+# If the above condition was false and user Entered two numbers as a command$
+
+Case 1: When parameters are not passed
+
+q52(1) - Shell Scripting Interview Questions - Edurekaq52.1 – Shell Scripting Interview Questions – Edureka
+
+Case 2: When parameters are correctly passed
+
+q52(2) - Shell Scripting Interview Questions - Edurekaq52.2 – Shell Scripting Interview Questions – Edureka
+
+Q54. Print a given number, in reverse order using a Shell script such that the input is provided using command Line Argument only.
+#!/bin/sh
+if [ $# -ne 1 ]
+then
+echo "Usage: $0 number"
+echo " Reverse of the given number will be printed"
+echo " For eg. $0 0123, 3210 will be printed"
+exit 1
+fi
+
+n=$1
+rev=0
+sd=0
+
+while [ $n -gt 0 ]
+do
+sd=`expr $n % 10`
+rev=`expr $rev * 10 + $sd`
+n=`expr $n / 10`
+done
+
+Case 1: When parameters are not passed
+q54(1) - Shell Scripting Interview Questions - Edurekaq54.1 – Shell Scripting Interview Questions – Edureka
+
+Case 2: When the parameter is correctly passed
+
+q54(2) - Shell Scripting Interview Questions - Edurekaq54.2 – Shell Scripting Interview Questions – Edureka
+
+Q55. Calculate a real number calculation directly from the terminal and not any shell script. 
+q55 - Shell Scripting Interview Questions - Edureka
+q55 – Shell Scripting Interview Questions – Edureka
+
+Q56. How can you get the value of pi till a 100 decimal places?
+q56 - Shell Scripting Interview Questions - Edureka
+q56 – Shell Scripting Interview Questions – Edureka
+
+Q57. How will you find the total disk space used by a specific user?
+du -sh ~
+
+Q58. How to check if a directory exists?
+#!/bin/sh
+
+if [ -d $mydir ]
+then
+echo "Directory exists"
+fi
+
+
+
+q57 - Shell Scripting Interview Questions - Edureka
+
+Q58. How to check if a directory exists?
+#!/bin/sh
+
+if [ -d $mydir ]
+then
+echo "Directory exists"
+fi
+
+q57 - Shell Scripting Interview Questions - Edurekaq58 – Shell Scripting Interview Questions – Edureka
+
+Q59. Can you write a script to portray how set –x works?
+#!/bin/sh
+#set -x
+i=1
+while [ $i -lt 6 ]
+do
+print "in loop iteration: $i"
+((i+=1))
+done
+exit
+
+#!/bin/sh
+set -x
+i=1
+while [ $i -lt 6 ]
+do
+print "in loop iteration: $i"
+((i+=1))
+done
+exit
+
+Q60. Suppose you execute a command using exec, what will be the status of your current process in the shell?
+All the forked processes which are new get overlays when the exec is executed. The command simply gets executed without making any impact on the current process. Also, no new process will be created in this scenario.
+
+These were all the questions we could think of, on the various aspects of Shell Scripting in Linux, that would cover you for any interview you’d appear for, in the shortest possible time frame. If you have any interesting questions that have been asked to you in an interview you’ve appeared before, feel free to drop them at the comments bar and we shall answer them for you. You could also refer to this video which explains the solutions to these problems in depth.
+
