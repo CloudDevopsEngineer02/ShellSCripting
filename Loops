@@ -1,0 +1,335 @@
+in
+${0} -->Positional Parameters which store the value of the 0 position Parameters
+${1}--> Postitional Paramenter is the first argument value 
+Parameter : A variable used with in th/ inside the shell script
+Argument: The data passed to shell script 
+
+Inside the script is paramenters and outside the scripts are arguments.
+
+VErify the PATH
+
+Which Command --> eg: which head
+
+which command:
+basename
+tailname
+
+echo "dirname{${0} }""
+
+The number of Paramenters can be denoted by $# or "${#}"
+
+
+ARgument Passing EXAMPLS:
+
+[ec2-user@ip-172-31-38-142 scripts]$ ./arguments.sh a b ab bc
+The number of argument(s) in the current script is :4
+[ec2-user@ip-172-31-38-142 scripts]$ ./arguments.sh a b 
+The number of argument(s) in the current script is :2
+[ec2-user@ip-172-31-38-142 scripts]$ $#
+-bash: 0: command not found
+[ec2-user@ip-172-31-38-142 scripts]$ "${#}"
+-bash: 0: command not found
+[ec2-user@ip-172-31-38-142 scripts]$ $"{#}"
+-bash: {#}: command not found
+[ec2-user@ip-172-31-38-142 scripts]$ echo " ${#}"
+ 0
+[ec2-user@ip-172-31-38-142 scripts]$ echo " ${#}"
+ 0
+[ec2-user@ip-172-31-38-142 scripts]$ echo " ${#}" testing finding
+ 0 testing finding
+[ec2-user@ip-172-31-38-142 scripts]$ ./arguments.sh testing finding searching
+The number of argument(s) in the current script is :3
+[ec2-user@ip-172-31-38-142 scripts]$ ./arguments.sh testing finding searching tunneling
+The number of argument(s) in the current script is :4
+[ec2-user@ip-172-31-38-142 scripts]$ ./arguments.sh testing finding searching tunneling autoscalling
+The number of argument(s) in the current script is :5
+[ec2-user@ip-172-31-38-142 scripts]$ ./arguments.sh testing finding searching tunneling autoscalling cloud_service DevOPS
+The number of argument(s) in the current script is :7
+[ec2-user@ip-172-31-38-142 scripts]$ ./arguments.sh testing finding
+The number of argument(s) in the current script is :2
+
+
+[ec2-user@ip-172-31-38-142 scripts]$ ./arguments.sh testing fi"ndi"ng
+The number of argument(s) in the current script is :2
+#ARguments passing with "" considered as a single argument.
+
+[ec2-user@ip-172-31-38-142 scripts]$ ./arguments.sh testing fi"ndi" ng
+The number of argument(s) in the current script is :3
+
+
+[ec2-user@ip-172-31-38-142 scripts]$ type -a for
+for is a shell keyword
+[ec2-user@ip-172-31-38-142 scripts]$ type -a echo
+echo is a shell builtin
+echo is /usr/bin/echo
+[ec2-user@ip-172-31-38-142 scripts]$ type -a if
+if is a shell keyword
+[ec2-user@ip-172-31-38-142 scripts]$ type -a then
+then is a shell keyword
+[ec2-user@ip-172-31-38-142 scripts]$ type -a in
+in is a shell keyword
+[ec2-user@ip-172-31-38-142 scripts]$ type -a do
+do is a shell keyword
+[ec2-user@ip-172-31-38-142 scripts]$ type -a done
+done is a shell keyword
+[ec2-user@ip-172-31-38-142 scripts]$
+
+
+IF condition Skeleton:
+
+if [[]]
+then
+
+echo ""
+exit 1
+fi
+
+$?--> Previous command is 0--Success 1----> Failure
+$#--> 
+$@-->
+
+
+[ec2-user@ip-172-31-38-142 scripts]$ help for | head 
+for: for NAME [in WORDS ... ] ; do COMMANDS; done
+    Execute commands for each member in a list.
+
+    The `for' loop executes a sequence of commands for each member in a
+    list of items.  If `in WORDS ...;' is not present, then `in "$@"' is
+    assumed.  For each element in WORDS, NAME is set to that element, and
+    the COMMANDS are executed.
+
+    Exit Status:
+    Returns the status of the last command executed.
+
+
+#For Loop 
+[ec2-user@ip-172-31-38-142 scripts]$ for X in ABhilash Revathi IShanvi
+> do
+> echo "{X}"
+> done
+{X}
+{X}
+{X}
+[ec2-user@ip-172-31-38-142 scripts]$ for X in ABhilash Revathi IShanvi; do echo "{X}"; done
+{X}
+{X}
+{X}
+[ec2-user@ip-172-31-38-142 scripts]$ for X in ABhilash Revathi IShanvi
+> do
+> echo "Hi to ${X} "
+> done
+Hi to ABhilash
+Hi to Revathi
+Hi to IShanvi
+[ec2-user@ip-172-31-38-142 scripts]$
+
+
+PATH:
+man bash
+/special parameters
+
+
+@      Expands  to  the  positional parameters, starting from one.  When the expansion occurs within double quotes, each
+              parameter expands to a separate word.  That is, "$@" is equivalent to "$1" "$2" ...  If the double-quoted  expan‐
+              sion occurs within a word, the expansion of the first parameter is joined with the beginning part of the original
+              word, and the expansion of the last parameter is joined with the last part of the original word.  When there  are
+              no positional parameters, "$@" and $@ expand to nothing (i.e., they are removed).
+
+
+*      Expands  to  the  positional parameters, starting from one.  When the expansion is not within double quotes, each
+              positional parameter expands to a separate word.  In contexts where it is performed, those words are  subject  to
+              further  word  splitting and pathname expansion.  When the expansion occurs within double quotes, it expands to a
+              single word with the value of each parameter separated by the first character of the IFS special variable.   That
+              is,  "$*"  is equivalent to "$1c$2c...", where c is the first character of the value of the IFS variable.  If IFS
+              is unset, the parameters are separated by spaces.  If IFS is null, the parameters are joined without  intervening
+              separators.
+
+
+#Generate a password while passing usernames as Arguments
+#!/bin/bash
+#!/bin/bash
+NUMBER_OF_PARAMENTERS="${#}"
+echo "The number of argument(s) in the current script is :${NUMBER_OF_PARAMENTERS}"
+for USER_NAME in "${@}"
+do
+          PASSWORD=$(date +%s%N | sha256sum | head -c48)
+             echo "${USER_NAME} : ${PASSWORD} "
+     done
+
+OUTPUT:
+
+[ec2-user@ip-172-31-38-142 scripts]$ ./argument_dynamicpassword.sh abhi ishanvi revs Bujji BUDDA
+The number of argument(s) in the current script is :5
+abhi : b7adfc31263b7b573dd2e007d51bfc1e9867af0471018d98
+ishanvi : aa1ebb4e228359ab6da1fb5a8026df1dbac28db45cc2b391
+revs : 5fc7d88beec9d4b7815f5884e7286ba462894b38dcddab40
+Bujji : 46b06050d4e401284d65f0b43e0b67e9c29ec290be00d42d
+BUDDA : 4ea3e19409fb3fe6654b37a020b7df40
+
+#if you provide * instead of @
+
+[ec2-user@ip-172-31-38-142 scripts]$  ./argument_dynamicpassword1.sh revs honey Abhi
+./argument_dynamicpassword1.sh: line 1: password: command not found
+The number of argument(s) in the current script is :revs honey Abhi
+revs : 4fff233d5c6e46d097c21c5f050d85bd5c9433bd616e86fe
+honey : 52e867b2b50c7dd739685cf5652a5c10cf79b0fa73524995
+Abhi : 0db6887b2adfe4e65db711bf1f0a34be930899e3d27e4225
+
+
+POSITIONAL PARAMETERS and While loop
+
+for X in 
+do 
+echo "{}"
+done
+
+
+Declare the first 3 paramenters 
+
+
+echo "Declaring the Pramenters as mentioned below: "
+echo " Prameter1 : ${1}"
+echo " Prameter2 : ${2}"
+echo " Prameter3 : ${3}"
+
+[ec2-user@ip-172-31-38-142 scripts]$ vim ./Shift-Whileloop.sh                                                                      
+[ec2-user@ip-172-31-38-142 scripts]$ ./Shift-Whileloop.sh Apple Banana Candy Donut
+Declaring the Pramenters as mentioned below:
+ Prameter1 : Apple
+ Prameter2 : Banana
+ Prameter3 : Candy
+#In the above PRamaters Donut has not been included to eliminate manual Parameter declarations can be done by While_LOOPS
+
+IF you give ARgument declaration wile pasing in program this can be acheived by Loops 
+
+for X in Arg1,Arg2,Arg3...
+do
+echo "X to ${X}"
+done
+
+The above one if you write with While Loops:
+
+[ec2-user@ip-172-31-38-142 scripts]$ type -a while
+while is a shell keyword
+[ec2-user@ip-172-31-38-142 scripts]$ help while
+while: while COMMANDS; do COMMANDS; done
+    Execute commands as long as a test succeeds.
+
+    Expand and execute COMMANDS as long as the final command in the
+    `while' COMMANDS has an exit status of zero.
+
+    Exit Status:
+    Returns the status of the last command executed.
+
+X=1
+while [[ "${X}" -eq 1 ]]  #${#} : Number of Parameters passed.
+>do
+> echo "This is the Value of X: ${X}"
+X=5
+done
+
+
+
+[ec2-user@ip-172-31-38-142 scripts]$ type -a sleep
+sleep is /usr/bin/sleep
+[ec2-user@ip-172-31-38-142 scripts]$ sleep 5s
+[ec2-user@ip-172-31-38-142 scripts]$ type -a true
+true is a shell builtin
+true is /usr/bin/true
+
+
+[ec2-user@ip-172-31-38-142 scripts]$ while [[ true ]]--> This is infinite While Loop.
+> do
+> echo "${RANDOM}"
+> sleep 2s
+> done
+24511
+7313
+4699
+14344
+11391
+19364
+10371
+17383
+31358
+174
+18908
+4824
+22773
+29149
+8495
+11286
+2743
+
+
+info sleep.
+
+25.1 ‘sleep’: Delay for a specified time
+========================================
+
+‘sleep’ pauses for an amount of time specified by the sum of the values
+of the command line arguments.  Synopsis:
+
+     sleep NUMBER[smhd]...
+
+   Each argument is a number followed by an optional unit; the default
+is seconds.  The units are:
+
+‘s’
+     seconds
+‘m’
+     minutes
+‘h’
+     hours
+‘d’
+     days
+
+
+#!bin/bash
+#Paramets declaration
+
+echo "Parameter 1 is : ${1} "
+echo "Parameter 2 is : ${2} "
+echo "Parameter 3 is : ${3} "
+
+while [[ "${#}" -gt 0 ]]
+do
+echo "The number of Parameters passed is ${#} "
+echo "The NAmes of Parameters passed are ${#} "
+echo "Parameter 1: ${1} "
+echo "Parameter 2: ${2} "
+echo "Parameter 3: ${3} "
+shift
+done
+
+OUTPUT:
+
+[ec2-user@ip-172-31-38-142 scripts]$ ./Shift-Whileloop.sh Ishanvi Revs Abhilash Honey Revathi
+Parameter 1 is : Ishanvi
+Parameter 2 is : Revs
+Parameter 3 is : Abhilash
+The number of Parameters passed is: 5
+The NAmes of Parameters passed are Ishanvi Revs Abhilash Honey Revathi
+Parameter 1: Ishanvi
+Parameter 2: Revs
+Parameter 3: Abhilash
+The number of Parameters passed is: 4
+The NAmes of Parameters passed are Revs Abhilash Honey Revathi
+Parameter 1: Revs
+Parameter 2: Abhilash
+Parameter 3: Honey
+The number of Parameters passed is: 3
+The NAmes of Parameters passed are Abhilash Honey Revathi
+Parameter 1: Abhilash
+Parameter 2: Honey
+Parameter 3: Revathi
+The number of Parameters passed is: 2
+The NAmes of Parameters passed are Honey Revathi
+Parameter 1: Honey
+Parameter 2: Revathi
+Parameter 3:
+The number of Parameters passed is: 1
+The NAmes of Parameters passed are Revathi
+Parameter 1: Revathi
+Parameter 2:
+Parameter 3:
